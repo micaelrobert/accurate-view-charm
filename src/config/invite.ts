@@ -15,7 +15,7 @@ export const INVITE = {
   location: "A definir",
 
   /** Somente números com DDI e DDD, ex.: "5511999999999" */
-  whatsappNumber: "",
+  whatsappNumber: "5522997553865",
   whatsappMessage:
     "Minha presença está confirmada no aniversário de 1 aninho da Seraphine!",
   mapsUrl: "",
