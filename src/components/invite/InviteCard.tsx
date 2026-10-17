@@ -85,7 +85,7 @@ export function InviteCard() {
 
           <motion.div variants={item} className="my-6"><Ornament /></motion.div>
 
-          <div className="grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-3">
+          <div className="grid grid-cols-1 gap-2.5 min-[420px]:grid-cols-3">
             <Detail icon={<CalendarHeart className="h-5 w-5" />} label="DATA" value={INVITE.date} />
             <Detail icon={<Clock className="h-5 w-5" />} label="HORÁRIO" value={INVITE.time} />
             <Detail icon={<Castle className="h-5 w-5" />} label="LOCAL" value={INVITE.location} />

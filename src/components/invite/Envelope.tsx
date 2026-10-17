@@ -26,7 +26,7 @@ export function Envelope({ open, name, age }: { open: boolean; name: string; age
               <stop offset="1" stopColor="#F2E3C6" />
             </linearGradient>
           </defs>
-          <path d="M0 40 L200 175 L400 40 L400 300 L0 300 Z" fill="url(#envBody)" />
+          <path d="M0 0 L400 0 L400 300 L0 300 Z" fill="url(#envBody)" />
           <path d="M0 300 L170 160 M400 300 L230 160" stroke="#C9A96A" strokeWidth="1.5" fill="none" />
           <rect x="6" y="6" width="388" height="288" rx="8" fill="none" stroke="#927044" strokeWidth="2" opacity="0.7" />
           <rect x="14" y="14" width="372" height="272" rx="6" fill="none" stroke="#C9A96A" strokeWidth="1" strokeDasharray="2 5" />
@@ -36,7 +36,7 @@ export function Envelope({ open, name, age }: { open: boolean; name: string; age
 
       {/* Aba superior */}
       <motion.div
-        className="absolute inset-x-0 top-0 h-[62%] origin-top [transform-style:preserve-3d]"
+        className="absolute inset-x-0 top-0 h-[50%] origin-top [transform-style:preserve-3d]"
         initial={false}
         animate={{ rotateX: open ? 180 : 0, zIndex: open ? 0 : 3 }}
         transition={{ delay: open ? 0.3 : 0, duration: 0.6, ease: "easeInOut" }}
@@ -47,9 +47,21 @@ export function Envelope({ open, name, age }: { open: boolean; name: string; age
         </svg>
       </motion.div>
 
+      {/* Rótulo do envelope */}
+      <motion.div
+        className="pointer-events-none absolute inset-x-0 bottom-[7%] z-[4] flex flex-col items-center text-center"
+        initial={false}
+        animate={{ opacity: open ? 0 : 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <span className="font-caps text-[0.6rem] font-bold tracking-[0.35em] text-gold sm:text-xs">CONVITE REAL</span>
+        <span className="font-script text-4xl leading-none text-apple-deep sm:text-5xl">{name}</span>
+        <span className="font-caps text-[0.65rem] tracking-[0.3em] text-forest sm:text-xs">{age}</span>
+      </motion.div>
+
       {/* Laço + selo */}
       <motion.div
-        className="absolute left-1/2 top-[52%] z-10 -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-1/2 top-[44%] z-10 -translate-x-1/2 -translate-y-1/2"
         initial={false}
         animate={open ? { scale: [1, 1.25, 0], rotate: [0, -20, 40], opacity: [1, 1, 0] } : { scale: 1, rotate: 0, opacity: 1 }}
         transition={{ duration: 0.45 }}
