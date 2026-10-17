@@ -1,5 +1,6 @@
-import standing from "@/assets/snow-standing.png.asset.json";
-import sitting from "@/assets/snow-sitting.png.asset.json";
+
+import standing from "@/assets/snow-standing.png";
+import sitting from "@/assets/snow-sitting.png";
 import forest from "@/assets/forest.jpg";
 
 /**
@@ -12,14 +13,17 @@ export const INVITE = {
   date: "22 de novembro",
   time: "10:00 horas",
   location: "A definir",
+
   /** Somente números com DDI e DDD, ex.: "5511999999999" */
   whatsappNumber: "",
-  whatsappMessage: "Minha presença está confirmada no aniversário de 1 aninho da Seraphine!",
+  whatsappMessage:
+    "Minha presença está confirmada no aniversário de 1 aninho da Seraphine!",
   mapsUrl: "",
   giftsUrl: "",
+
   images: {
-    standing: standing.url,
-    sitting: sitting.url,
+    standing,
+    sitting,
     forest,
   },
 };
