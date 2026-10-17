@@ -56,7 +56,7 @@ export const sound = {
   },
   fanfare() {
     lastFx = Date.now();
-    [[784, 0], [988, 0.14], [1175, 0.28], [1568, 0.46], [1175, 0.46], [1976, 0.7]].forEach(([f, s]) => bell(f, s, 2, 0.08));
+    [[784, 0], [988, 0.14], [1175, 0.28], [1568, 0.46], [1175, 0.46], [1976, 0.7]].forEach(([f, s]) => bell(f!, s!, 2, 0.08));
   },
   startMusic() {
     const c = getCtx();
@@ -74,8 +74,8 @@ export const sound = {
     ];
     let step = 0;
     const tick = () => {
-      const chord = chords[Math.floor(step / 8) % chords.length];
-      const note = chord[[0, 2, 1, 3, 2, 1, 3, 2][step % 8]] * 2;
+      const chord = chords[Math.floor(step / 8) % chords.length]!;
+      const note = chord[[0, 2, 1, 3, 2, 1, 3, 2][step % 8]!]! * 2;
       bell(note, 0, 2.4, 0.05, musicGain!);
       step++;
     };
