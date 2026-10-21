@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useServerFn } from "@tanstack/react-start";
 import { Crown, Loader2, RotateCcw, ScrollText, Sparkles, X } from "lucide-react";
@@ -169,7 +170,7 @@ export function RsvpScroll({ onClose }: Props) {
 
   const rolledUp = phase === "closing" || phase === "sealed" || phase === "thanks";
 
-  return (
+  return createPortal(
     <motion.div
       className="fixed inset-0 z-[100] overflow-hidden"
       initial={{ opacity: 0 }}
@@ -486,6 +487,7 @@ export function RsvpScroll({ onClose }: Props) {
           )}
         </AnimatePresence>
       </div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }
