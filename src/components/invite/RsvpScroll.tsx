@@ -231,20 +231,22 @@ export function RsvpScroll({ onClose }: Props) {
                   ease: [0.65, 0, 0.35, 1],
                 }}
               >
-                <div className="parchment relative max-h-[calc(100svh-6.5rem)] overflow-y-auto overscroll-contain px-5 pb-6 pt-7 sm:px-9 sm:pb-8 sm:pt-9">
-                  {/* bordas e ornamentos do documento */}
-                  <div aria-hidden className="pointer-events-none absolute inset-2 rounded-sm border border-gold/50" />
-                  <div aria-hidden className="pointer-events-none absolute inset-3.5 rounded-sm border border-dashed border-gold/30" />
+                <div className="parchment relative">
+                  {/* bordas e ornamentos do documento (fixos enquanto o conteúdo rola) */}
+                  <div aria-hidden className="pointer-events-none absolute inset-2 z-10 rounded-sm border border-gold/50" />
+                  <div aria-hidden className="pointer-events-none absolute inset-3.5 z-10 rounded-sm border border-dashed border-gold/30" />
 
                   <button
                     type="button"
                     onClick={onClose}
                     disabled={busy}
                     aria-label="Fechar confirmação de presença"
-                    className="absolute right-3.5 top-3.5 z-10 grid h-10 w-10 place-items-center rounded-full border border-gold/40 bg-cream/60 text-apple-deep transition-colors hover:bg-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold disabled:opacity-40"
+                    className="absolute right-3.5 top-3.5 z-20 grid h-10 w-10 place-items-center rounded-full border border-gold/40 bg-cream/60 text-apple-deep transition-colors hover:bg-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold disabled:opacity-40"
                   >
                     <X className="h-5 w-5" />
                   </button>
+
+                  <div className="max-h-[calc(100svh-6.5rem)] overflow-y-auto overscroll-contain px-5 pb-6 pt-7 sm:px-9 sm:pb-8 sm:pt-9">
 
                   <motion.div
                     className="relative text-center"
@@ -410,6 +412,7 @@ export function RsvpScroll({ onClose }: Props) {
                       </motion.button>
                     </div>
                   </motion.form>
+                  </div>
                 </div>
               </motion.div>
 
