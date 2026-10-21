@@ -222,7 +222,7 @@ export function RsvpScroll({ onClose }: Props) {
               <Rod />
 
               <motion.div
-                className="relative z-10 -my-2 w-[calc(100%-1.75rem)] overflow-hidden sm:w-[calc(100%-2.25rem)]"
+                className="relative z-10 -my-2 w-[calc(100%-1.75rem)] overflow-clip sm:w-[calc(100%-2.25rem)]"
                 initial={{ height: 0 }}
                 animate={{ height: rolledUp ? 0 : "auto" }}
                 transition={{

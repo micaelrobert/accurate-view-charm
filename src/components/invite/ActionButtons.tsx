@@ -303,7 +303,7 @@ export function ActionButtons() {
     setShowRsvp(false);
     // volta suavemente ao topo do convite, sem recarregar a página
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setTimeout(() => window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }), 350);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }), 650);
   }, []);
 
   return (
