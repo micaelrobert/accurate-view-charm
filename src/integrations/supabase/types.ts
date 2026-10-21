@@ -14,7 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      confirmacoes_presenca: {
+        Row: {
+          assinatura_caminho: string
+          confirmado_em: string
+          id: string
+          nome_convidado: string
+        }
+        Insert: {
+          assinatura_caminho: string
+          confirmado_em?: string
+          id: string
+          nome_convidado: string
+        }
+        Update: {
+          assinatura_caminho?: string
+          confirmado_em?: string
+          id?: string
+          nome_convidado?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
