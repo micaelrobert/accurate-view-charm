@@ -383,8 +383,8 @@ export function RsvpScroll({ onClose }: Props) {
                       <motion.button
                         type="submit"
                         disabled={busy}
-                        whileHover={busy ? undefined : { scale: 1.02 }}
-                        whileTap={busy ? undefined : { scale: 0.97 }}
+                        whileHover={busy ? {} : { scale: 1.02 }}
+                        whileTap={busy ? {} : { scale: 0.97 }}
                         className="shimmer order-1 flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl border-2 border-gold-light bg-apple-gradient px-4 py-3 font-caps text-sm font-bold tracking-wide text-cream shadow-apple transition-shadow hover:shadow-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold disabled:cursor-wait disabled:opacity-90 sm:order-2"
                       >
                         {submitting ? (
@@ -404,7 +404,7 @@ export function RsvpScroll({ onClose }: Props) {
                         type="button"
                         onClick={handleRedo}
                         disabled={busy || !hasInk}
-                        whileTap={busy ? undefined : { scale: 0.97 }}
+                        whileTap={busy ? {} : { scale: 0.97 }}
                         className="order-2 flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border border-gold/50 bg-cream/80 px-4 py-3 font-caps text-xs font-bold tracking-wide text-apple-deep transition-shadow hover:shadow-glow focus-visible:outline-2 focus-visible:outline-gold disabled:opacity-50 disabled:hover:shadow-none sm:order-1"
                       >
                         <RotateCcw className="h-4 w-4" />
