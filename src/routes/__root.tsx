@@ -80,6 +80,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#657D54" },
+
+      // Título e Descrição para Navegadores e Redes
+      { title: "Convite Real: 1 Aninho da Seraphine" },
+      { name: "description", content: "Por ordem do reino, você está convidado para a celebração do primeiro aniversário da princesa Seraphine!" },
+
+      // Open Graph (WhatsApp, Facebook, Instagram)
+      { property: "og:title", content: "Convite Real: 1 Aninho da Seraphine" },
+      {
+        property: "og:description",
+        content: "Por ordem do reino, você está convidado para o primeiro aniversário da princesa Seraphine. Toque para abrir o convite e confirmar sua presença!",
+      },
+      { property: "og:image", content: "https://conviteseraphine.vercel.app/convite.png" },
+      { property: "og:image:type", content: "image/png" },
+      { property: "og:url", content: "https://conviteseraphine.vercel.app" },
+      { property: "og:type", content: "website" },
+
+      // Twitter Cards
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Convite Real: 1 Aninho da Seraphine" },
+      {
+        name: "twitter:description",
+        content: "Por ordem do reino, você está convidado para a celebração do primeiro aniversário da princesa Seraphine!",
+      },
+      { name: "twitter:image", content: "https://conviteseraphine.vercel.app/convite.png" },
     ],
     links: [
       {
@@ -88,7 +112,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap",
+      },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
