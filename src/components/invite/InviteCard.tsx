@@ -1,8 +1,11 @@
 import { motion, type Variants } from "motion/react";
-import { CalendarHeart, Clock, Castle } from "lucide-react";
+import { CalendarHeart, Clock, Castle, Waves } from "lucide-react";
 import { INVITE } from "@/config/invite";
 import { ActionButtons } from "./ActionButtons";
 import { Apple, Particles, Star } from "./Particles";
+
+// Local da festa (já definido)
+const LOCATION_NAME = "Espaço Lara Jackson";
 
 const item: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -29,13 +32,64 @@ function Corner({ className }: { className: string }) {
   );
 }
 
-function Detail({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function Detail({
+  icon,
+  label,
+  value,
+  className = "",
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  className?: string;
+}) {
   return (
-    <motion.div variants={item} className="flex flex-col items-center gap-1 rounded-xl bg-sky/25 px-2 py-3 ring-1 ring-gold/30">
+    <motion.div
+      variants={item}
+      className={`flex min-w-0 flex-col items-center gap-1 rounded-xl bg-sky/25 px-2 py-3 text-center ring-1 ring-gold/30 ${className}`}
+    >
       <span className="text-apple">{icon}</span>
       <span className="font-caps text-[0.65rem] font-bold tracking-[0.25em] text-gold">{label}</span>
-      <span className="font-body text-lg font-semibold leading-tight text-ink">{value}</span>
+      <span className="text-balance break-words font-body text-lg font-semibold leading-tight text-ink">{value}</span>
     </motion.div>
+  );
+}
+
+/** Aviso do reino: piscina e brinquedos com água */
+function PoolNotice() {
+  return (
+    <motion.aside
+      variants={item}
+      aria-label="Aviso importante"
+      className="relative mt-4 overflow-hidden rounded-2xl bg-gradient-to-br from-sky/40 via-sky/20 to-cream px-4 pb-9 pt-5 text-center ring-1 ring-gold/50 sm:px-6"
+    >
+      {/* bolhinhas decorativas */}
+      <span aria-hidden className="anim-float pointer-events-none absolute left-4 top-4 h-2.5 w-2.5 rounded-full border border-gold/50 bg-white/50" />
+      <span aria-hidden className="anim-float pointer-events-none absolute right-5 top-7 h-3.5 w-3.5 rounded-full border border-gold/50 bg-white/40" />
+      <span aria-hidden className="anim-float pointer-events-none absolute bottom-10 right-10 h-2 w-2 rounded-full border border-gold/50 bg-white/50" />
+      <span aria-hidden className="anim-float pointer-events-none absolute bottom-12 left-8 h-1.5 w-1.5 rounded-full border border-gold/50 bg-white/50" />
+
+      <span className="relative mx-auto grid h-12 w-12 place-items-center rounded-full border border-gold-light bg-gold-gradient text-apple-deep shadow-glow">
+        <Waves className="h-6 w-6" />
+      </span>
+
+      <p className="mt-3 font-caps text-[0.65rem] font-bold tracking-[0.25em] text-apple">AVISO DO REINO</p>
+
+      <p className="mx-auto mt-1.5 max-w-xs text-balance font-body text-lg font-semibold leading-snug text-ink">
+        Haverá piscina e brinquedos com água, traga seu traje de banho!
+      </p>
+
+      {/* ondinha na base */}
+      <svg
+        aria-hidden
+        viewBox="0 0 120 16"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-4 w-full text-sky/60"
+      >
+        <path d="M0 8 Q15 0 30 8 T60 8 T90 8 T120 8 V16 H0z" fill="currentColor" />
+      </svg>
+      <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-gold-gradient opacity-60" />
+    </motion.aside>
   );
 }
 
@@ -85,11 +139,19 @@ export function InviteCard() {
 
           <motion.div variants={item} className="my-6"><Ornament /></motion.div>
 
-          <div className="grid grid-cols-1 gap-2.5 min-[420px]:grid-cols-3">
+          {/* Data e horário lado a lado; o local ocupa a linha toda para o nome caber bem em qualquer tela */}
+          <div className="grid grid-cols-1 gap-2.5 min-[420px]:grid-cols-2">
             <Detail icon={<CalendarHeart className="h-5 w-5" />} label="DATA" value={INVITE.date} />
             <Detail icon={<Clock className="h-5 w-5" />} label="HORÁRIO" value={INVITE.time} />
-            <Detail icon={<Castle className="h-5 w-5" />} label="LOCAL" value={INVITE.location} />
+            <Detail
+              icon={<Castle className="h-5 w-5" />}
+              label="LOCAL"
+              value={LOCATION_NAME}
+              className="min-[420px]:col-span-2"
+            />
           </div>
+
+          <PoolNotice />
 
           <motion.div variants={item} className="mt-7">
             <ActionButtons />
