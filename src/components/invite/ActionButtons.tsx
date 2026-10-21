@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import {
   AnimatePresence,
   motion,
@@ -7,8 +7,9 @@ import {
 } from "motion/react";
 import { Gift, MapPin, MailCheck, X, Sparkles } from "lucide-react";
 import { toast } from "sonner";
-import { INVITE, whatsappLink } from "@/config/invite";
+import { INVITE } from "@/config/invite";
 import { sound } from "@/lib/sound";
+import { RsvpScroll } from "./RsvpScroll";
 
 function openOrWarn(url: string, warn: string) {
   if (!url) {
@@ -296,6 +297,14 @@ function GiftSuggestions({ onClose }: GiftSuggestionsProps) {
 
 export function ActionButtons() {
   const [showGiftSuggestions, setShowGiftSuggestions] = useState(false);
+  const [showRsvp, setShowRsvp] = useState(false);
+
+  const closeRsvp = useCallback(() => {
+    setShowRsvp(false);
+    // volta suavemente ao topo do convite, sem recarregar a página
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setTimeout(() => window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }), 650);
+  }, []);
 
   return (
     <>
@@ -306,11 +315,7 @@ export function ActionButtons() {
           whileTap={{ scale: 0.96 }}
           onClick={() => {
             sound.fanfare();
-
-            openOrWarn(
-              whatsappLink(INVITE.whatsappNumber, INVITE.whatsappMessage),
-              "O número para confirmação ainda será informado."
-            );
+            setShowRsvp(true);
           }}
           className="shimmer flex min-h-20 w-full items-center gap-4 rounded-2xl border-2 border-gold-light bg-apple-gradient px-5 py-4 text-left text-cream shadow-apple transition-shadow hover:shadow-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
         >
@@ -355,6 +360,10 @@ export function ActionButtons() {
         {showGiftSuggestions && (
           <GiftSuggestions onClose={() => setShowGiftSuggestions(false)} />
         )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showRsvp && <RsvpScroll onClose={closeRsvp} />}
       </AnimatePresence>
     </>
   );
