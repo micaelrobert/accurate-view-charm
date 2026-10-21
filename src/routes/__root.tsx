@@ -91,8 +91,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         property: "og:description",
         content: "Por ordem do reino, você está convidado para o primeiro aniversário da princesa Seraphine. Toque para abrir o convite e confirmar sua presença!",
       },
-      { property: "og:image", content: "https://conviteseraphine.vercel.app/convite-v2.png" },
-      { property: "og:image:type", content: "image/png" },
+      { property: "og:image", content: "https://conviteseraphine.vercel.app/convite-v2.jpg" },
+      { property: "og:image:type", content: "image/jpg" },
       { property: "og:url", content: "https://conviteseraphine.vercel.app" },
       { property: "og:type", content: "website" },
 
@@ -103,7 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "twitter:description",
         content: "Por ordem do reino, você está convidado para a celebração do primeiro aniversário da princesa Seraphine!",
       },
-      { name: "twitter:image", content: "https://conviteseraphine.vercel.app/convite-v2.png" },
+      { name: "twitter:image", content: "https://conviteseraphine.vercel.app/convite-v2.jpg" },
     ],
     links: [
       {
